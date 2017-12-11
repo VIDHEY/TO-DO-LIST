@@ -1,0 +1,85 @@
+<html>
+<head>
+    <title>TO-DO-LIST</title>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="todo.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="maincontainer">
+    <div class="container">
+        <div class="header">
+            <h1>TO-DO-LIST</h1>
+        </div>
+    <div class="items">
+        <ul id="list">
+       
+        <li class="element">SW TOOLS ASSIGNMENT<span id="cl" onclick="closed(this);"><i class="close fa-1x fa fa-times-circle" aria-hidden="true"></i></span></li>
+       
+        <li class="element">MEETING AT 10PM<span onclick="closed(this);"><i class="close fa-1x fa fa-times-circle" aria-hidden="true"></i></span></li>
+       
+        </ul>
+            <div id="inpt">
+                <input type="text" name="input" id="input1" />    
+            </div>
+            <button type="button" onclick="add();">ADD</button>
+    
+    </div>       
+          
+    </div>
+ </div>
+  <script>
+        
+   
+    function add(){
+        
+        var txt=document.getElementById('input1').value;
+        var x = document.getElementById('list').childElementCount;
+        
+        if(txt!="" && x>0)
+        {
+        var t1=document.createTextNode(txt);
+
+        var newli=document.createElement('li');
+        var ex=document.getElementById('cl');
+        var ex2=ex.cloneNode(true);
+        newli.appendChild(t1);
+        newli.appendChild(ex2);
+        newli.classList.add('element');
+        var app=document.getElementById('list');
+        app.appendChild(newli);
+        document.getElementById('input1').value="";
+        }
+
+        else if(txt!="" && x==0)
+        {
+        var t1=document.createTextNode(txt);
+        var newli=document.createElement('li'); 
+        newli.appendChild(t1);
+        var sp=document.createElement('span');
+        var ic=document.createElement('i');
+        ic.classList.add('close','fa-1x','fa','fa-times-circle');
+        ic.setAttribute("aria-hidden","true");
+        sp.appendChild(ic);
+        sp.setAttribute("id","cl");
+        sp.setAttribute("onclick","closed(this);");
+        newli.appendChild(sp);
+        newli.classList.add('element');
+        var app=document.getElementById('list');
+        app.appendChild(newli);
+        document.getElementById('input1').value="";
+        
+        }
+
+    }
+
+     function closed(em){
+       var em1=em.parentNode;
+       em1.remove();
+    }
+ </script>
+</body>
+
+</html>
